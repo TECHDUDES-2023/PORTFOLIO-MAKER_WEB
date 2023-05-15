@@ -156,21 +156,37 @@ if($email != false && $password != false){
 				<li>
 					<i class='bx bxs-calendar-check' ></i>
 					<span class="text">
-						<h3>1020</h3>
-						<p>New Order</p>
+						<h3>		
+							<?php
+                            	$sql="SELECT count(id) AS total FROM projects";
+                            	$result=mysqli_query($con,$sql);
+                            	$values=mysqli_fetch_assoc($result);
+                            	$num_rows=$values['total'];                                  
+                            	echo "<h1>$num_rows</h1>";
+                        	?>
+						</h3>
+						<p>Projects</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3>2834</h3>
-						<p>Visitors</p>
+						<h3>		
+							<?php
+                            	$sql="SELECT count(id) AS total FROM usertable";
+                            	$result=mysqli_query($con,$sql);
+                            	$values=mysqli_fetch_assoc($result);
+                            	$num_rows=$values['total'];                                  
+                            	echo "<h1>$num_rows</h1>";
+                        	?>
+						</h3>
+						<p>Accounts</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<h3>$2543</h3>
+						<h3>$0</h3>
 						<p>Total Sales</p>
 					</span>
 				</li>

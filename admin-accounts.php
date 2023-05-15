@@ -22,6 +22,26 @@ if($email != false && $password != false){
 }else{
     header('Location: login-admin.php');
 }
+
+
+
+if(isset($_POST['update_plan'])){
+    $id = $_POST['id'];
+    $plan = $_POST['plan'];
+
+ 
+    $update_query = mysqli_query($con, "UPDATE `usertable` SET plan = '$plan' WHERE id = '$id'");
+ 
+    if($update_query){
+       
+       $message[] = 'product updated succesfully';
+       header('location:admin-accounts.php');
+    }else{
+       $message[] = 'product could not be updated';
+       header('location:admin-accounts.php');
+    }
+ 
+ }
 ?>
 
 
@@ -37,6 +57,46 @@ if($email != false && $password != false){
 	<link rel="stylesheet" href="css/admin.css">
 
 	<title><?php echo $fetch_info['firstname'] ?> | Home</title>
+
+	<style>
+		.edit-form-container{
+    position: fixed;
+    top:0; left:0;
+    z-index: 3000;
+    background-color: black;
+    padding:2rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+ }
+ 
+ .edit-form-container form{
+    width: 25rem;
+    border-radius: .5rem;
+    background-color: white;
+    text-align: center;
+    padding:2rem;
+ }
+ 
+ .edit-form-container form .box{
+    width: 100%;
+    background-color: white;
+    border-radius: .5rem;
+    margin: .5rem;
+    font-size: 1rem;
+    color: var(--black);
+    padding: 0.2rem 1.4rem;
+    text-transform: none;
+ }
+
+ .container{
+    max-width: 1200px;
+    margin:0 auto;
+    /* padding-bottom: 5rem; */
+ }
+	</style>
 </head>
 <body>
 
@@ -143,6 +203,8 @@ if($email != false && $password != false){
 								<th>Email</th>
 								<th>Status</th>
 								<th>Plan</th>
+								<th>Action</th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -153,22 +215,26 @@ if($email != false && $password != false){
 
                                 if ($result->num_rows > 0) {
                                     while ($row = $result-> fetch_assoc()) {
-                                        echo "<tr>
-                                        <td> $row[id]</td>
-                                        <td> $row[firstname]</td>
-                                        <td> $row[lastname]</td>
-                                        <td> $row[email]</td>
-                                        <td> $row[status]</td>
-										<td> $row[plan]</td>
-                                                
-                                        </tr>";
+										echo '<tr>
+										<td>'. $row['id'] .'</td>
+										<td>'. $row['firstname'] .'</td>
+										<td>'. $row['lastname'] .'</td>
+										<td>'. $row['email'] .'</td>
+										<td>'. $row['status'] .'</td>
+										<td>'. $row['plan'] .'</td>
+										<td> <a href="admin-accounts.php?edit='. $row['id'] .'" class="btn-download">Update Plan</a></td>
+									  </tr>';
                                     }
                                 }
+								
                             ?>
+
+							
 
 						</tbody>
 					</table>
 				</div>
+				
 				
 			</div>
 		</main>
@@ -176,6 +242,42 @@ if($email != false && $password != false){
 	</section>
 	<!-- CONTENT -->
 	
+	<div class="container">
+    <section class="edit-form-container">
+
+    <?php
+
+    if(isset($_GET['edit'])){
+    $edit_id = $_GET['edit'];
+    $edit_query = mysqli_query($con, "SELECT * FROM `usertable` WHERE id = $edit_id");
+    if(mysqli_num_rows($edit_query) > 0){
+        while($fetch_edit = mysqli_fetch_assoc($edit_query)){
+    ?>
+
+        <form action="" method="post" enctype="multipart/form-data">
+        
+        <input type="hidden" name="id" value="<?php echo $fetch_edit['id']; ?>">
+        <input type="text" class="box" required name="plan" value="<?php echo $fetch_edit['plan']; ?>">
+
+        <input type="submit" value="update plan" name="update_plan" class="btn-download">
+		
+        <input type="reset" value="cancel" class="btn-download" onclick="location.href='admin-accounts.php';">
+
+        </form>
+
+    <?php
+         };
+      };
+      echo "<script>document.querySelector('.edit-form-container').style.display = 'flex';</script>";
+   };
+    ?>
+
+    </section>
+</div>
+
+
+
+
 
 	<script src="admin.js"></script>
 </body>
