@@ -43,7 +43,7 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><?php echo $user['firstname']; ?> - Portfolio Maker</title>
-    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/index.css?version=1" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
 
    
@@ -153,8 +153,7 @@ else{
               <div class="big-title"> 
                 <h1>Welcome to Portfolio Maker</h1>
                 <h2>Start Exploring now.</h1>
-                <!--<h3>u are on a <?php //echo $user['plan']; ?> plan</h3>
-                <h3>UR ID IS <?php //echo $user_id;?></h3>-->
+
                 
               </div>
               <p class="text">
@@ -179,8 +178,6 @@ else{
             <h2>You might want to try...</h2>
           </div>
         </div>
-        
-
         <div class="small-container">
           <div class="row">
             <div class="column">
@@ -192,20 +189,9 @@ else{
               <a href="templates/Stimulus/index.php"><h4>Stimulus</h4></a>
             </div>
             <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
+              <a href="templates/Meyawo/index.php"><img src="img/meyawo.png" alt=""></a>
+              <a href="templates/Meyawo/index.php"><h4>Meyawo</h4></a>
             </div>
-            <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
-            </div>
-            <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
-            </div>
-            <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
             </div>
           </div>
         </div>
@@ -223,28 +209,9 @@ else{
         <div class="small-container">
           <div class="row">
             <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
+              <a href="templates/Kards/index.php"><img src="img/kards.png" alt=""></a>
+              <a href="templates/Kards/index.php"><h4>Kards</h4></a>
             </div>
-            <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
-            </div>
-            <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
-            </div>
-            <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
-            </div>
-            <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
-            </div>
-            <div class="column">
-              <a href="#"><img src="img/maintenance.jpg" alt=""></a>
-              <a href="#"><h4>My First Portfolio</h4></a>
             </div>
           </div>
         </div>
@@ -266,19 +233,18 @@ else{
         </div>
 
         <div class="small-container">
-          <div class="row" style="justify-content:left !important; margin-left:20px;">
+          <div class="row">
             <div class="column">
               <a href="templates/uploaded_templates/<?php echo $row['folder']?>"><img src="img/<?php echo $row['image']?>" alt=""></a>
               <a href="templates/uploaded_templates/<?php echo $row['folder']?>"><h4><?php echo $row['name']?></h4></a>
             </div>
-
             <?php
             };    
             }else{
                
             };
             ?>
-            
+
           </div>
         </div>
     
